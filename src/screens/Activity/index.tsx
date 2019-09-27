@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import {View, Text, Alert} from 'react-native';
+import {View, Alert} from 'react-native';
 
 import {useCurrentActivity} from '@src/store/activity';
 import {ActivityActions} from '@src/store/activity/actions';
 import {convertMeterTo} from '@src/utils';
 import ScreenLayout from '@src/components/ScreenLayout';
+import T from '@src/components/T';
 
 const Activity: React.FC<{}> = () => {
   const [activity, dispatch] = useCurrentActivity();
@@ -29,15 +30,15 @@ const Activity: React.FC<{}> = () => {
   return (
     <ScreenLayout>
       <>
-        <Text>Activity status: "{activityState}"</Text>
-        <Text>Activity currentSplit: "{currentSplit}"</Text>
-        <Text>Traveled distance: {convertMeterTo(distance, 'km', 2)} kms</Text>
-        <Text>Pace: {currentPace} mins/km</Text>
-        <Text>GPS entries: ({routeEntries.length})</Text>
+        <T>Activity status: "{activityState}"</T>
+        <T>Activity currentSplit: "{currentSplit}"</T>
+        <T>Traveled distance: {convertMeterTo(distance, 'km', 2)} kms</T>
+        <T>Pace: {currentPace} mins/km</T>
+        <T>GPS entries: ({routeEntries.length})</T>
         {routeEntries.map((routeEntry, index) => (
-          <Text key={index}>
+          <T key={index}>
             {routeEntry.coords.latitude} / {routeEntry.coords.longitude}
-          </Text>
+          </T>
         ))}
       </>
     </ScreenLayout>

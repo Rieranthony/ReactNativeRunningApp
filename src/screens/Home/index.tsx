@@ -10,6 +10,7 @@ import {RouteEntry} from '@src/store/activity/types';
 import Map from '@src/components/Map';
 import { BaseButton } from '@src/components/Button';
 import { screens } from '@src/bootstrap/navigator';
+import T from '@src/components/T';
 
 const Home: React.FC<{} & NavigationInjectedProps> = ({navigation}) => {
   const [currentPosition, setCurrentPosition] = useState<RouteEntry>();
@@ -57,7 +58,7 @@ const Home: React.FC<{} & NavigationInjectedProps> = ({navigation}) => {
         }}>
         <SafeAreaView>
           <BaseButton onPress={handleStartActivity} style={{ height: 60, width: '100%', backgroundColor: '#ffffff' }}>
-            <Text>Start activity</Text>
+            <T variant='button'>Start activity</T>
           </BaseButton>
         </SafeAreaView>
       </View>

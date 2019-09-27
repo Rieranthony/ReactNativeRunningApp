@@ -1,7 +1,20 @@
 import Permissions from 'react-native-permissions';
 import haversine from 'haversine';
+import { PixelRatio, Dimensions } from 'react-native'
 
 import {Units, RouteEntry} from '@src/store/activity/types';
+
+// Baselined to iPhone X/8/7/6
+// https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/Displays/Displays.html
+export const normaliseFont = (size: number) => {
+  const baselineScreenWidth = 375
+  const { width: screenWidth } = Dimensions.get('window')
+  const scale = screenWidth / baselineScreenWidth
+
+  return scale < 1
+    ? Math.round(PixelRatio.roundToNearestPixel(size * scale))
+    : size
+}
 
 // Get distance between two coordonates using the haversine formula
 export const getDistanceBetweenCoords = (
