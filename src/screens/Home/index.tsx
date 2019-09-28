@@ -8,9 +8,10 @@ import Geolocation, {
 
 import {RouteEntry} from '@src/store/activity/types';
 import Map from '@src/components/Map';
-import { BaseButton } from '@src/components/Button';
+import { Button } from '@src/components/Button';
 import { screens } from '@src/bootstrap/navigator';
 import T from '@src/components/T';
+import AppColors from '@src/utils/colors';
 
 const Home: React.FC<{} & NavigationInjectedProps> = ({navigation}) => {
   const [currentPosition, setCurrentPosition] = useState<RouteEntry>();
@@ -57,9 +58,9 @@ const Home: React.FC<{} & NavigationInjectedProps> = ({navigation}) => {
           flexDirection: 'column-reverse',
         }}>
         <SafeAreaView>
-          <BaseButton onPress={handleStartActivity} style={{ height: 60, width: '100%', backgroundColor: '#ffffff' }}>
-            <T variant='button'>Start activity</T>
-          </BaseButton>
+          <Button color={AppColors.yellow} onPress={handleStartActivity}>
+            <T variant='button'>START RUN</T>
+          </Button>
         </SafeAreaView>
       </View>
     </View>

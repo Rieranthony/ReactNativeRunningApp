@@ -47,7 +47,7 @@ const Map: React.FC<MapProps> = ({latitude, longitude}) => (
       scrollEnabled={false}
       toolbarEnabled={false}
       pitchEnabled={false}>
-      <MarkerContainer coordinate={{longitude, latitude}}>
+      <MarkerContainer coordinate={{longitude, latitude}} tracksViewChanges={false}>
         <Marker isCurrentLocation />
       </MarkerContainer>
     </MapView>

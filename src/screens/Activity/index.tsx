@@ -35,11 +35,7 @@ const Activity: React.FC<{}> = () => {
         <T>Traveled distance: {convertMeterTo(distance, 'km', 2)} kms</T>
         <T>Pace: {currentPace} mins/km</T>
         <T>GPS entries: ({routeEntries.length})</T>
-        {routeEntries.map((routeEntry, index) => (
-          <T key={index}>
-            {routeEntry.coords.latitude} / {routeEntry.coords.longitude}
-          </T>
-        ))}
+
       </>
     </ScreenLayout>
   );
