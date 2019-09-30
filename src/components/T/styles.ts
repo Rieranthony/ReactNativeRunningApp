@@ -17,7 +17,7 @@ export default StyleSheet.create({
   h1: {
     fontSize: normaliseFont(110),
     lineHeight: 129,
-    fontWeight: 'normal',
+    fontWeight: '600',
     letterSpacing: -1.5
   },
   h3: {
