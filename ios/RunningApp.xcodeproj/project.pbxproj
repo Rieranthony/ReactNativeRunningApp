@@ -20,7 +20,6 @@
 		5114920A19F6DDA65EB94EA6 /* libPods-RunningAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6EF5673EEB54F8C55BB866F /* libPods-RunningAppTests.a */; };
 		796BFEBAB428BFA5A21CB7C5 /* libPods-RunningApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AF3C736B9D48D7AD6F1876 /* libPods-RunningApp-tvOSTests.a */; };
 		8AB0E741670D806F8C2B4ABC /* libPods-RunningApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6E3F8954D6CB2CB10BD12B /* libPods-RunningApp.a */; };
-		FCF9E3FF2326FF86000C67C5 /* AirGoogleMaps in Resources */ = {isa = PBXBuildFile; fileRef = FCF9E3FE2326FF86000C67C5 /* AirGoogleMaps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +67,6 @@
 		D50B5BD80B8139BF8429E6AD /* Pods-RunningApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-RunningApp-tvOSTests/Pods-RunningApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FCF9E3FE2326FF86000C67C5 /* AirGoogleMaps */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AirGoogleMaps; path = "../node_modules/react-native-maps/lib/ios/AirGoogleMaps"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +174,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				FCF9E3FE2326FF86000C67C5 /* AirGoogleMaps */,
 				13B07FAE1A68108700A75B9A /* RunningApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RunningAppTests */,
@@ -232,7 +229,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B63A5046DD65CFC2F44A521A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -339,7 +335,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCF9E3FF2326FF86000C67C5 /* AirGoogleMaps in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
@@ -390,24 +385,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		B63A5046DD65CFC2F44A521A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RunningApp/Pods-RunningApp-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RunningApp/Pods-RunningApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		C64A80FA6114C32227AABE97 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
