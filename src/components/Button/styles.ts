@@ -5,6 +5,6 @@ export default StyleSheet.create({
     padding: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 8,
+    flex: 1
   }
 })

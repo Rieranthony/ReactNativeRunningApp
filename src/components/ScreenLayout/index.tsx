@@ -1,10 +1,14 @@
 import React, {memo} from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {View} from 'react-native';
+import SafeAreaView from 'react-native-safe-area-view';
+
 import AppColors from '@src/utils/colors';
 
 const ScreenLayout: React.FC<{children: React.ReactNode}> = ({children}) => (
-  <SafeAreaView style={{flex: 1, backgroundColor: AppColors.dark}}>
-    <View style={{flex: 1, paddingHorizontal: 24}}>{children}</View>
+  <SafeAreaView
+    style={{flex: 1, backgroundColor: AppColors.dark}}
+    forceInset={{bottom: 'never'}}>
+    {children}
   </SafeAreaView>
 );
 

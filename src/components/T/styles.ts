@@ -12,7 +12,7 @@ export default StyleSheet.create({
     fontSize: normaliseFont(20),
     lineHeight: 23,
     fontWeight: '500',
-    letterSpacing: 4
+    letterSpacing: 2
   },
   h1: {
     fontSize: normaliseFont(110),
@@ -38,8 +38,8 @@ export default StyleSheet.create({
     letterSpacing: 0.44
   },
   giant: {
-    fontSize: normaliseFont(200),
-    lineHeight: 234,
+    fontSize: normaliseFont(190),
+    lineHeight: 220,
     fontWeight: 'bold',
     letterSpacing: -1.5
   },

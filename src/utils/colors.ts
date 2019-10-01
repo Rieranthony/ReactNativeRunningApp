@@ -1,17 +1,17 @@
 enum AppColors {
-  yellow = '#E8A718',
-  red = '#DB2028',
+  yellow = '#FCA311',
+  red = '#B80C09',
   white = '#FFFFFF',
   dark = '#212121',
   grey = '#E5E5E5'
 };
 
 export enum AppDarkenedColors {
-  yellow = '#d19614',
-  red = '#c51c24',
-  white = '#e5e5e5',
-  dark = '#1d1d1d',
-  grey = '#cecece'
+  yellow = '#FCAB26',
+  red = '#A80B09',
+  white = '#E8E8E8',
+  dark = '#353535',
+  grey = '#D1D1D1'
 };
 
 export default AppColors;

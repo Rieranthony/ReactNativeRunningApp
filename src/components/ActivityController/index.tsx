@@ -18,6 +18,7 @@ const ActivityDetail: React.FC<Props> = ({activityState, onChangeState}) => {
     notStarted: (
       <>
         <Button
+          isBottomSticked
           color={AppColors.yellow}
           onPress={() => onChangeState(ActivityActions.start)}>
           <T variant="button">START</T>
@@ -27,6 +28,7 @@ const ActivityDetail: React.FC<Props> = ({activityState, onChangeState}) => {
     ongoing: (
       <>
         <Button
+          isBottomSticked
           color={AppColors.yellow}
           onPress={() => onChangeState(ActivityActions.pause)}>
           <T variant="button">PAUSE</T>
@@ -36,11 +38,13 @@ const ActivityDetail: React.FC<Props> = ({activityState, onChangeState}) => {
     paused: (
       <>
         <Button
+          isBottomSticked
           color={AppColors.yellow}
           onPress={() => onChangeState(ActivityActions.resume)}>
           <T variant="button">RESUME</T>
         </Button>
         <Button
+          isBottomSticked
           color={AppColors.red}
           onPress={() => onChangeState(ActivityActions.stop)}>
           <T variant="button">STOP</T>

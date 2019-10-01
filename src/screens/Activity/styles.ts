@@ -4,5 +4,8 @@ export default StyleSheet.create({
   activityContainer: {
     flex: 1,
     justifyContent: 'space-between'
+  },
+  resultsContainer: {
+    paddingHorizontal: 24
   }
 })

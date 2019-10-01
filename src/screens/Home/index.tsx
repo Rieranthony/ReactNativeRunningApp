@@ -22,11 +22,9 @@ const Home: React.FC<{} & NavigationInjectedProps> = ({navigation}) => {
           alignContent: 'center',
           flexDirection: 'column-reverse',
         }}>
-        <SafeAreaView>
           <Button color={AppColors.yellow} onPress={handleStartActivity}>
             <T variant='button'>START RUN</T>
           </Button>
-        </SafeAreaView>
       </View>
     </View>
   );

@@ -1,5 +1,5 @@
-import React, {useEffect, Dispatch} from 'react';
-import {View, Alert} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Alert, Dimensions} from 'react-native';
 
 import {useCurrentActivity} from '@src/store/activity';
 import {ActivityActions} from '@src/store/activity/actions';
@@ -8,7 +8,10 @@ import ScreenLayout from '@src/components/ScreenLayout';
 import T from '@src/components/T';
 import ActivityDetail from '@src/components/ActivityDetail';
 import ActivityController from '@src/components/ActivityController';
-import localStyles from './styles'
+import localStyles from './styles';
+import AppColors from '@src/utils/colors';
+import StatsOverlay from '@src/components/StatsOverlay';
+
 const Activity: React.FC<{}> = () => {
   const [activity, dispatch] = useCurrentActivity();
   const {activityState, distance, currentSplit, currentPace} = activity;
@@ -17,31 +20,41 @@ const Activity: React.FC<{}> = () => {
     if (currentSplit > 0) Alert.alert('NEW SPLIT BABY: ' + currentSplit);
   }, [currentSplit]);
 
-  const handleChangeState = (action: ActivityActions): void => dispatch({type: action})
+  const handleChangeState = (action: ActivityActions): void =>
+    dispatch({type: action});
+  const distanceRan = convertMeterTo(distance, 'km', 2);
+  const currentPaceSplit = currentPace.toPrecision(2);
 
   return (
-    <ScreenLayout>
-      <View style={localStyles.activityContainer}>
-        <View>
-          <T variant="h4">Run</T>
-          <ActivityDetail
-            label="Distance ran"
-            value={`${convertMeterTo(distance, 'km', 2)}`}
-            variant="h1"
-          />
-          <ActivityDetail label="Time" value={'00:12:45'} variant="h3" />
-          <ActivityDetail
-            label="Average pace"
-            value={`${currentPace.toPrecision(2)}`}
-            variant="h3"
-          />          
-        </View>
-        <ActivityController 
-          activityState={activityState}
-          onChangeState={handleChangeState}
+    <>
+      <ScreenLayout>
+        <StatsOverlay
+          distanceRan={distanceRan}
+          currentPaceSplit={currentPaceSplit}
+          isInBackground
         />
-      </View>
-    </ScreenLayout>
+        <View style={localStyles.activityContainer}>
+          <View style={localStyles.resultsContainer}>
+            <T variant="h4">Run</T>
+            <ActivityDetail
+              label="Distance ran"
+              value={distanceRan}
+              variant="h1"
+            />
+            <ActivityDetail label="Time" value={'00:12:45'} variant="h3" />
+            <ActivityDetail
+              label="Average pace"
+              value={currentPaceSplit}
+              variant="h3"
+            />
+          </View>
+          <ActivityController
+            activityState={activityState}
+            onChangeState={handleChangeState}
+          />
+        </View>
+      </ScreenLayout>
+    </>
   );
 };
 

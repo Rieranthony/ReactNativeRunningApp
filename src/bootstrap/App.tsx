@@ -2,14 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {View, StatusBar} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import Geolocation from '@react-native-community/geolocation';
-import { useScreens } from 'react-native-screens';
+import {useScreens} from 'react-native-screens';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import AppNavigator from '@src/bootstrap/navigator';
 import ActivityProvider from '@src/store/activity';
 import GeolocationWatcher from '@src/containers/GeolocationWatcher';
 import {requestPermission as request} from '@src/utils';
 
-useScreens()
+useScreens();
 
 const App: React.FC<any> = () => {
   const [permision, setPermision] = useState<boolean>(true);
@@ -29,12 +30,14 @@ const App: React.FC<any> = () => {
 
   return (
     <View style={{flex: 1}}>
-      <ActivityProvider>
-        <GeolocationWatcher>
-          <StatusBar barStyle="light-content" />
-          <Navigator />
-        </GeolocationWatcher>
-      </ActivityProvider>
+      <SafeAreaProvider>
+        <ActivityProvider>
+          <GeolocationWatcher>
+            <StatusBar barStyle="light-content" />
+            <Navigator />
+          </GeolocationWatcher>
+        </ActivityProvider>
+      </SafeAreaProvider>
     </View>
   );
 };
