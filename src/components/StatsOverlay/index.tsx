@@ -1,18 +1,21 @@
 import React from 'react';
-import {View, Dimensions} from 'react-native';
+import {Animated, Dimensions, TouchableWithoutFeedback} from 'react-native';
 
-import T from '../T';
+import T from '@src/components/T';
+import localStyles from './styles';
 
 interface Props {
   distanceRan: string;
   currentPaceSplit: string;
   isInBackground: boolean;
+  onClose?: () => void;
 }
 
 const StatsOverlay: React.FC<Props> = ({
   distanceRan,
   currentPaceSplit,
   isInBackground,
+  onClose,
 }) => {
   const screenHeight = Dimensions.get('screen').height;
   const screenWidth = Dimensions.get('screen').width;
@@ -20,32 +23,29 @@ const StatsOverlay: React.FC<Props> = ({
   const OFFSET = screenHeight / 2 - screenWidth / 2;
 
   return (
-    <View
-      style={[
-        {
-          flex: 1,
-          justifyContent: 'center',
-          paddingHorizontal: 50,
-          paddingVertical: 24,
-          backgroundColor: 'rgba(33,33,33, 0.9)',
-          position: 'absolute',
-          height: screenWidth,
-          width: screenHeight,
-          transform: [
-            {
-              rotate: '90deg',
-            },
-            {translateX: OFFSET},
-            {translateY: OFFSET},
-          ],
-        },
-        isInBackground && {opacity: 0.05},
-      ]}>
-      <T variant="giant">{distanceRan}</T>
-      <T variant="giant" align="right">
-        {currentPaceSplit}
-      </T>
-    </View>
+    <TouchableWithoutFeedback onPress={onClose}>
+      <Animated.View
+        style={[
+          localStyles.statsContainer,
+          {
+            height: screenWidth,
+            width: screenHeight,
+            transform: [
+              {
+                rotate: '90deg',
+              },
+              {translateX: OFFSET},
+              {translateY: OFFSET},
+            ],
+          },
+          isInBackground && { zIndex: 0, opacity: 0.05 },
+        ]}>
+        <T variant="giant">{distanceRan}</T>
+        <T variant="giant" align="right">
+          {currentPaceSplit}
+        </T>
+      </Animated.View>
+    </TouchableWithoutFeedback>
   );
 };
 

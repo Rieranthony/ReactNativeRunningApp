@@ -39,7 +39,6 @@ const GeolocationWatcher: React.FC<{}> = ({children}) => {
   }
 
   const handleWatchPositionError = (error: GeolocationError): void => {
-    console.error('handleWatchPositionError :', error)
   }
 
   return <>{children}</>;
