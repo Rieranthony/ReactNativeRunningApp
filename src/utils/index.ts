@@ -1,4 +1,4 @@
-import Permissions from 'react-native-permissions';
+import Permissions, { Status as PermissionsStatus } from 'react-native-permissions';
 import haversine from 'haversine';
 import {PixelRatio, Dimensions} from 'react-native';
 
@@ -33,9 +33,17 @@ export const getDistanceBetweenCoords = (
     return totalDistance + lastTravelledDistance;
   }, 0);
 
-export const requestPermission = async (type: string) => {
+export const checkPermission = async (type: string): Promise<PermissionsStatus> => {
   try {
     return await Permissions.check(type);
+  } catch (err) {
+    return err;
+  }
+};
+
+export const requestPermission = async (type: string): Promise<PermissionsStatus> => {
+  try {
+    return await Permissions.request(type);
   } catch (err) {
     return err;
   }
@@ -53,8 +61,6 @@ export const calculatePace = (
       routeEntries[currentSplitStartIndex].timestamp) /
     1000 /
     60;
-
-  // console.log('pace: ', (1 * ranDistanceSplitInKm) / timeInMin)
 
   return timeInMin / ranDistanceSplitInKm;
 };
@@ -80,15 +86,13 @@ export const convertMeterTo = (
       break;
   }
 
-  return result.toPrecision(precision);
+  return result.toFixed(precision);
 };
 
 export const convertMsToDigitDisplay = (count: number): string => {
-  // var days = Math.floor(difference / (1000 * 60 * 60 * 24));
   const hours = Math.floor((count % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((count % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((count % (1000 * 60)) / 1000);
-  //  const milliseconds = Math.floor((difference % (1000 * 60)) / 100);
 
   const digitHours = hours < 10 ? '0' + hours : hours;
   const digitMinutes = minutes < 10 ? '0' + minutes : minutes;

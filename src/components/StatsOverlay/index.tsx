@@ -38,7 +38,7 @@ const StatsOverlay: React.FC<Props> = ({
               {translateY: OFFSET},
             ],
           },
-          isInBackground && { zIndex: 0, opacity: 0.05 },
+          isInBackground && { zIndex: 0, opacity: 0.1 },
         ]}>
         <T variant="giant">{distanceRan}</T>
         <T variant="giant" align="right">

@@ -20,6 +20,7 @@
 		5114920A19F6DDA65EB94EA6 /* libPods-RunningAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6EF5673EEB54F8C55BB866F /* libPods-RunningAppTests.a */; };
 		796BFEBAB428BFA5A21CB7C5 /* libPods-RunningApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AF3C736B9D48D7AD6F1876 /* libPods-RunningApp-tvOSTests.a */; };
 		8AB0E741670D806F8C2B4ABC /* libPods-RunningApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6E3F8954D6CB2CB10BD12B /* libPods-RunningApp.a */; };
+		FCEF1907234A571B0065CCD2 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCEF1906234A571B0065CCD2 /* AppCenter-Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		D50B5BD80B8139BF8429E6AD /* Pods-RunningApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-RunningApp-tvOSTests/Pods-RunningApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		FCEF1906234A571B0065CCD2 /* AppCenter-Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "AppCenter-Config.plist"; path = "RunningApp/AppCenter-Config.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				FCEF1906234A571B0065CCD2 /* AppCenter-Config.plist */,
 				13B07FAE1A68108700A75B9A /* RunningApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* RunningAppTests */,
@@ -337,6 +340,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				FCEF1907234A571B0065CCD2 /* AppCenter-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,4 +1,4 @@
-import React, {useState, Dispatch} from 'react';
+import React, {useState} from 'react';
 import {View, TouchableWithoutFeedback} from 'react-native';
 
 import {Activity as ActivityType} from '@src/store/activity/types';
@@ -22,7 +22,7 @@ const Activity: React.FC<Props> = ({ activity, onChangeState, timer }) => {
   const {activityState, distance, currentSplit, currentPace} = activity;
   const [isActivityStatsOpen, setActivityStatsOpen] = useState<boolean>(false);
   const distanceRan = convertMeterTo(distance, 'km', 2);
-  const currentPaceSplit = currentPace.toPrecision(2);
+  const currentPaceSplit = currentPace.toFixed(2);
 
   // useEffect(() => {
   //   if (currentSplit > 0) Alert.alert('NEW SPLIT BABY: ' + currentSplit);

@@ -1,29 +1,30 @@
 import React, {useEffect, useState} from 'react';
 import {View, StatusBar} from 'react-native';
 import {createAppContainer} from 'react-navigation';
-import Geolocation from '@react-native-community/geolocation';
+import { Status } from 'react-native-permissions';
 import {useScreens} from 'react-native-screens';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import AppNavigator from '@src/bootstrap/navigator';
 import ActivityProvider from '@src/store/activity';
 import GeolocationWatcher from '@src/containers/GeolocationWatcher';
-import {requestPermission as request} from '@src/utils';
+import {requestPermission as request, checkPermission} from '@src/utils';
+import AppColors from '@src/utils/colors';
 
 useScreens();
 
 const App: React.FC<any> = () => {
-  const [permision, setPermision] = useState<boolean>(true);
-
   useEffect(() => {
-    const requestPermission = async () => {
-      const res = await request('location');
+    const checkAndRequestPermission = async () => {
+      const typeToCheck = 'location';
+      const check = await checkPermission(typeToCheck);
 
-      setPermision(res === 'authorized');
+      if (check === 'undetermined' || check === 'denied') {
+        await request(typeToCheck)
+      }
     };
 
-    requestPermission();
-    Geolocation.requestAuthorization();
+    checkAndRequestPermission();
   }, []);
 
   const Navigator = createAppContainer(AppNavigator);
@@ -33,7 +34,7 @@ const App: React.FC<any> = () => {
       <SafeAreaProvider>
         <ActivityProvider>
           <GeolocationWatcher>
-            <StatusBar barStyle="light-content" />
+            <StatusBar barStyle="light-content" backgroundColor={AppColors.dark}/>
             <Navigator />
           </GeolocationWatcher>
         </ActivityProvider>
