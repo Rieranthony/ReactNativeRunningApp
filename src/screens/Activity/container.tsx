@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import Analytics from 'appcenter-analytics';
 
 import ActivityComponent from './';
 import {useCurrentActivity} from '@src/store/activity';
@@ -66,8 +67,10 @@ const ActivityContainer: any = (Component: typeof ActivityComponent) => () => {
     setTimerOn(true);
   };
 
-  const handleChangeState = (action: ActivityActions): void =>
+  const handleChangeState = (action: ActivityActions): void => {
+    Analytics.trackEvent('Activity state changed', {Action: action});
     dispatch({type: action});
+  };
 
   return (
     <Component
