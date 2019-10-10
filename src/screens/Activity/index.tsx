@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, TouchableWithoutFeedback} from 'react-native';
+import KeepAwake from 'react-native-keep-awake';
 
 import {Activity as ActivityType} from '@src/store/activity/types';
 import {ActivityActions} from '@src/store/activity/actions';
@@ -14,11 +15,11 @@ import ActivityContainer from './container';
 
 interface Props {
   activity: ActivityType;
-  onChangeState: (action: ActivityActions) => void
-  timer: string
+  onChangeState: (action: ActivityActions) => void;
+  timer: string;
 }
 
-const Activity: React.FC<Props> = ({ activity, onChangeState, timer }) => {
+const Activity: React.FC<Props> = ({activity, onChangeState, timer}) => {
   const {activityState, distance, currentSplit, currentPace} = activity;
   const [isActivityStatsOpen, setActivityStatsOpen] = useState<boolean>(false);
   const distanceRan = convertMeterTo(distance, 'km', 2);
@@ -34,6 +35,7 @@ const Activity: React.FC<Props> = ({ activity, onChangeState, timer }) => {
   return (
     <>
       <ScreenLayout>
+        <KeepAwake />
         <StatsOverlay
           distanceRan={distanceRan}
           currentPaceSplit={currentPaceSplit}

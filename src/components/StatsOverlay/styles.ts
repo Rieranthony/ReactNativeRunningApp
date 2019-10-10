@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import AppColors from '@src/utils/colors';
 
@@ -11,5 +11,6 @@ export default StyleSheet.create({
     backgroundColor: AppColors.dark,
     position: 'absolute',
     zIndex: 10,
-  }
-})
+    opacity: 0.1,
+  },
+});
