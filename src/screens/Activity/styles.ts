@@ -1,11 +1,12 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   activityContainer: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   resultsContainer: {
-    paddingHorizontal: 24
-  }
-})
+    flex: 1,
+    paddingHorizontal: 24,
+  },
+});

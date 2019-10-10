@@ -1,4 +1,6 @@
-import Permissions, { Status as PermissionsStatus } from 'react-native-permissions';
+import Permissions, {
+  Status as PermissionsStatus,
+} from 'react-native-permissions';
 import haversine from 'haversine';
 import {PixelRatio, Dimensions} from 'react-native';
 
@@ -33,7 +35,9 @@ export const getDistanceBetweenCoords = (
     return totalDistance + lastTravelledDistance;
   }, 0);
 
-export const checkPermission = async (type: string): Promise<PermissionsStatus> => {
+export const checkPermission = async (
+  type: string,
+): Promise<PermissionsStatus> => {
   try {
     return await Permissions.check(type);
   } catch (err) {
@@ -41,7 +45,9 @@ export const checkPermission = async (type: string): Promise<PermissionsStatus> 
   }
 };
 
-export const requestPermission = async (type: string): Promise<PermissionsStatus> => {
+export const requestPermission = async (
+  type: string,
+): Promise<PermissionsStatus> => {
   try {
     return await Permissions.request(type);
   } catch (err) {
@@ -65,11 +71,7 @@ export const calculatePace = (
   return timeInMin / ranDistanceSplitInKm;
 };
 
-export const convertMeterTo = (
-  value: number,
-  toUnit: Units,
-  precision: number,
-): string => {
+export const convertMeterTo = (value: number, toUnit: Units): number => {
   let result;
   switch (toUnit) {
     default:
@@ -86,7 +88,15 @@ export const convertMeterTo = (
       break;
   }
 
-  return result.toFixed(precision);
+  return Math.round(result * 100) / 100;
+};
+
+export const formatPace = (value: number) => {
+  if (value === Infinity || value === 0) {
+    return "--'--";
+  }
+
+  return value.toString().replace('.', "'");
 };
 
 export const convertMsToDigitDisplay = (count: number): string => {

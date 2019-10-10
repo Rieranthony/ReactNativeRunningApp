@@ -6,11 +6,10 @@ export default StyleSheet.create({
   statsContainer: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 50,
-    paddingVertical: 24,
+    paddingHorizontal: 40,
     backgroundColor: AppColors.dark,
     position: 'absolute',
-    zIndex: 10,
+    zIndex: 1,
     opacity: 0.1,
   },
 });

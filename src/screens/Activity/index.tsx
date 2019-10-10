@@ -4,7 +4,7 @@ import KeepAwake from 'react-native-keep-awake';
 
 import {Activity as ActivityType} from '@src/store/activity/types';
 import {ActivityActions} from '@src/store/activity/actions';
-import {convertMeterTo} from '@src/utils';
+import {convertMeterTo, formatPace} from '@src/utils';
 import ScreenLayout from '@src/components/ScreenLayout';
 import T from '@src/components/T';
 import ActivityDetail from '@src/components/ActivityDetail';
@@ -22,8 +22,8 @@ interface Props {
 const Activity: React.FC<Props> = ({activity, onChangeState, timer}) => {
   const {activityState, distance, currentSplit, currentPace} = activity;
   const [isActivityStatsOpen, setActivityStatsOpen] = useState<boolean>(false);
-  const distanceRan = convertMeterTo(distance, 'km', 2);
-  const currentPaceSplit = currentPace.toFixed(2);
+  const distanceRan = convertMeterTo(distance, 'km');
+  const currentPaceSplit = formatPace(Math.round(currentPace * 100) / 100);
 
   // useEffect(() => {
   //   if (currentSplit > 0) Alert.alert('NEW SPLIT BABY: ' + currentSplit);
@@ -37,7 +37,7 @@ const Activity: React.FC<Props> = ({activity, onChangeState, timer}) => {
       <ScreenLayout>
         <KeepAwake />
         <StatsOverlay
-          distanceRan={distanceRan}
+          distanceRan={distanceRan.toString()}
           currentPaceSplit={currentPaceSplit}
           isInBackground={!isActivityStatsOpen}
           onClose={toggleStatsOpen}
@@ -48,7 +48,7 @@ const Activity: React.FC<Props> = ({activity, onChangeState, timer}) => {
               <T variant="h4">Run</T>
               <ActivityDetail
                 label="Distance ran (KM)"
-                value={distanceRan}
+                value={distanceRan.toString()}
                 variant="h1"
               />
               <ActivityDetail label="Time" value={timer} variant="h3" />
