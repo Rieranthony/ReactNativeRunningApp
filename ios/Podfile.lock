@@ -1,4 +1,6 @@
 PODS:
+  - "@mauron85_react-native-background-geolocation (0.6.3)":
+    - React
   - appcenter (2.4.0):
     - AppCenterReactNativeShared
     - React
@@ -254,6 +256,7 @@ PODS:
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - "@mauron85_react-native-background-geolocation (from `../node_modules/@mauron85/react-native-background-geolocation`)"
   - appcenter (from `../node_modules/appcenter/ios`)
   - appcenter-analytics (from `../node_modules/appcenter-analytics/ios`)
   - appcenter-crashes (from `../node_modules/appcenter-crashes/ios`)
@@ -302,6 +305,8 @@ SPEC REPOS:
     - AppCenterReactNativeShared
 
 EXTERNAL SOURCES:
+  "@mauron85_react-native-background-geolocation":
+    :path: "../node_modules/@mauron85/react-native-background-geolocation"
   appcenter:
     :path: "../node_modules/appcenter/ios"
   appcenter-analytics:
@@ -376,6 +381,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  "@mauron85_react-native-background-geolocation": 70177f5ccd8844497a2f5f0a23c77ee4c4608d42
   AppCenter: 49a9ffe114c00e2bf5374aeda816d47eabf1978a
   appcenter: 4072e79b8d037d99056e6fc6556224b4525b5829
   appcenter-analytics: 94be52eca805d586207d710aac95e0ddca8b3ddb

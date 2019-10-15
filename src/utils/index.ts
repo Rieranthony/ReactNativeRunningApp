@@ -92,11 +92,11 @@ export const convertMeterTo = (value: number, toUnit: Units): number => {
 };
 
 export const formatPace = (value: number) => {
-  if (value === Infinity || value === 0) {
+  if (value === Infinity || value === 0 || value === NaN) {
     return "--'--";
   }
 
-  return value.toString().replace('.', "'");
+  return value.toString().replace('.', "'") + '"';
 };
 
 export const convertMsToDigitDisplay = (count: number): string => {
