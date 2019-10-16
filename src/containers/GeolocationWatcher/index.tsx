@@ -2,10 +2,6 @@ import React, {useEffect} from 'react';
 import BackgroundGeolocation, {
   BackgroundGeolocationError,
 } from '@mauron85/react-native-background-geolocation';
-import Geolocation, {
-  GeolocationResponse,
-  GeolocationError,
-} from '@react-native-community/geolocation';
 
 import {useCurrentActivity} from '@src/store/activity';
 import {RouteEntry} from '@src/store/activity/types';
@@ -15,6 +11,7 @@ const GeolocationWatcher: React.FC<{}> = ({children}) => {
   const [{activityState}, dispatch] = useCurrentActivity();
   const activityInterval = 5000;
 
+  // configure the tracking
   useEffect(() => {
     BackgroundGeolocation.configure({
       desiredAccuracy: BackgroundGeolocation.HIGH_ACCURACY,
@@ -36,27 +33,31 @@ const GeolocationWatcher: React.FC<{}> = ({children}) => {
 
   // Start or stop the geolocation watching given the activity state
   useEffect(() => {
+    if (activityState === 'notStarted') {
+      registerEvents();
+    }
+
     if (activityState === 'ongoing') {
-      registerEventsAndStart();
-    } else {
-      stopRecordingPosition();
+      BackgroundGeolocation.start();
+    }
+
+    if (activityState === 'stopped') {
+      BackgroundGeolocation.removeAllListeners();
+    }
+
+    if (activityState === 'paused') {
+      BackgroundGeolocation.stop();
     }
   }, [activityState]);
 
-  const registerEventsAndStart = () => {
+  const registerEvents = () => {
     // Register events
     BackgroundGeolocation.on('location', ({latitude, longitude}) =>
       handleWatchPositionUpdate(latitude, longitude),
     );
 
     BackgroundGeolocation.on('error', error => handleWatchPositionError(error));
-
-    // start activity
-    BackgroundGeolocation.start();
   };
-
-  const stopRecordingPosition = () =>
-    BackgroundGeolocation.removeAllListeners();
 
   const handleWatchPositionUpdate = (
     latitude: number,
