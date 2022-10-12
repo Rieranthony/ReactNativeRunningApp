@@ -16,9 +16,9 @@
   "dependencies": {
     "@mauron85/react-native-background-geolocation": "^0.6.3",
     "@react-native-community/async-storage": "^1.6.1",
-    "appcenter": "2.4.0",
-    "appcenter-analytics": "2.4.0",
-    "appcenter-crashes": "2.4.0",
+    "appcenter": "4.4.5",
+    "appcenter-analytics": "4.4.5",
+    "appcenter-crashes": "4.4.5",
     "haversine": "^1.1.1",
     "react": "16.9.0",
     "react-native": "0.61.2",
